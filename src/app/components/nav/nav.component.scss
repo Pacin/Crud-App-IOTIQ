@@ -1,0 +1,31 @@
+@import "src/assets/styles/_theme.scss";
+
+.sidenav-container {
+  flex: 1;
+  height: 100vh;
+  .sidenav {
+    min-width: 240px;
+    a {
+      margin-top: 20px;
+      display: block;
+      padding: 6px 24px;
+      width: 100%;
+      text-align: left;
+    }
+  }
+  main {
+    padding: 18px 24px;
+  }
+}
+
+.toolbar {
+  background-color: $blue;
+  &-wrapper {
+    display: block;
+    width: 100%;
+  }
+
+  &-logo {
+    padding: 10px;
+  }
+}
