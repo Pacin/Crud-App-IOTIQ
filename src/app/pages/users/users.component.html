@@ -1,1 +1,8 @@
-<p>users works!</p>
+<div *ngIf="userList">
+    <div *ngFor="let user of userList">
+        <span>{{user.name}}</span><br>
+        <span>{{user.username}}</span>
+        <span>{{todosCount}}</span>
+        <hr>
+    </div>
+</div>
