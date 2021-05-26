@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { UserModel } from 'src/app/models/user.model';
-import { TodoModel } from 'src/app/models/todo.model';
-=======
 import { TodoModel } from 'src/app/models/todo.model';
 import { UserModel } from 'src/app/models/user.model';
 import { TodoService } from 'src/app/services/todo.service';
->>>>>>> de4da1b25b07de3c6e8eb2d628ba220b73bb3258
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,35 +10,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-<<<<<<< HEAD
-  columns: any[] = ['A', 'B','C', 'D'];
-  userList: UserModel[] = [];
-  todosList: TodoModel[] = [];
-
-  getUser() {
-    this.userService.fetchUsers().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        let todosCount = this.todosList.filter(todo => todo.userId == data[i].id).length;
-        data[i]["todoCount"] = todosCount;
-      }
-
-      this.userList = data
-      });
-  }
-  
-  constructor(
-    private userService: UserService
-  ) 
-  { }
-
-
-  ngOnInit(): void {
-    this.getUser();
-  }
-
-
-
-=======
   displayedColumns: string[] = [
     'name',
     'username',
@@ -52,9 +18,16 @@ export class UsersComponent implements OnInit {
     'city',
     'todosCount',
   ];
+  newUser = {
+    name: '',
+    email:'',
+    phone:'',
+    city: '',
+  }
   dataSource: any;
   data: UserModel[];
   todoList: TodoModel[];
+  isUserModalOpen: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -86,8 +59,10 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  openUserModal() {
-    console.log('User Modal Opened.');
+  
+
+  toggleUserModal() {
+    this.isUserModalOpen = !this.isUserModalOpen;
   }
->>>>>>> de4da1b25b07de3c6e8eb2d628ba220b73bb3258
+
 }

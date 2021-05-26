@@ -15,9 +15,11 @@ import { NavComponent } from './components/nav/nav.component';
 import { UsersComponent } from './pages/users/users.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { TodosComponent } from './pages/todos/todos.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import { TableComponent } from './components/table/table.component';
+import { CardComponent } from './components/card/card.component';
+import { ModalComponent } from './components/modal/modal.component';
+import {MatInputModule} from '@angular/material/input';
+import { LandingComponent } from './pages/landing/landing.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,9 @@ import { TableComponent } from './components/table/table.component';
     UsersComponent,
     PostsComponent,
     TodosComponent,
+    CardComponent,
+    ModalComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,8 @@ import { TableComponent } from './components/table/table.component';
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
+    MatInputModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

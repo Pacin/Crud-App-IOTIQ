@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-<div *ngIf="userList">
-    <div *ngFor="let user of userList">
-        <span>{{user.name}}</span><br>
-        <span>{{user.username}}</span>
-        <span>{{todosCount}}</span>
-        <hr>
-    </div>
-</div>
-=======
 <div class="container">
   <button
     mat-flat-button
     color="primary"
     class="user-action-btn"
-    (click)="openUserModal()"
+    (click)="toggleUserModal()"
   >
     New User
   </button>
@@ -52,4 +42,15 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
->>>>>>> de4da1b25b07de3c6e8eb2d628ba220b73bb3258
+
+<app-modal  [isOpen]="isUserModalOpen">
+  <div class="modal-wrapper">
+  <header class="modal-header">
+    <button mat-icon-button  class="modal-close" color="secondary" (click)="toggleUserModal()"><mat-icon>close</mat-icon></button>
+     <h3 class="header-title">Create User</h3>
+     <hr>
+  </header> 
+  <div class="modal-content">
+  </div>
+</div>
+</app-modal>
