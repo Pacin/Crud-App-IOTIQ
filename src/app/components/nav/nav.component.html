@@ -1,26 +1,28 @@
-<div class="toolbar">
-  <header class="toolbar-wrapper">
-    <button mat-button class="toolbar-logo" (click)="sidenav.toggle()">
-      <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
-    </button>
-  </header>
+<div class="app">
+  <div class="toolbar">
+    <header class="toolbar-wrapper">
+      <button mat-button class="toolbar-logo" (click)="sidenav.toggle()">
+        <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
+      </button>
+    </header>
+  </div>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #sidenav
+      autoFocus="false"
+      mode="side"
+      [(opened)]="isMenuOpen"
+      (click)="onSidenavClick()"
+      class="sidenav"
+    >
+      <a mat-button routerLink="/users">USERS</a>
+      <a mat-button routerLink="/todos">TODOS</a>
+      <a mat-button routerLink="/posts">POSTS</a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #sidenav
-    autoFocus="false"
-    mode="side"
-    [(opened)]="isMenuOpen"
-    (click)="onSidenavClick()"
-    class="sidenav"
-  >
-    <a mat-button routerLink="/users">USERS</a>
-    <a mat-button routerLink="/todos">TODOS</a>
-    <a mat-button routerLink="/posts">POSTS</a>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </mat-sidenav-content>
-</mat-sidenav-container>

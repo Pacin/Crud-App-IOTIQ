@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+table {
+  max-width: 1200px;
+  overflow: auto;
+  max-height: fit-content;
+  width: 100%;
+}
+
+.mat-header-cell {
+  text-align: center;
+}
+
+.mat-cell {
+  text-align: center;
+}

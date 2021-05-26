@@ -1,8 +1,8 @@
-@import "src/assets/styles/_theme.scss";
+@import "../../../assets/styles/theme";
 
 .sidenav-container {
   flex: 1;
-  height: 100vh;
+  height: calc(100vh - 56px);
   .sidenav {
     min-width: 240px;
     a {
@@ -19,9 +19,11 @@
 }
 
 .toolbar {
+  width: 100%;
   background-color: $blue;
   &-wrapper {
     display: block;
+    height: $header;
     width: 100%;
   }
 
