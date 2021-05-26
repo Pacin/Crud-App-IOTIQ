@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div *ngIf="userList">
     <div *ngFor="let user of userList">
         <span>{{user.name}}</span><br>
@@ -6,3 +7,49 @@
         <hr>
     </div>
 </div>
+=======
+<div class="container">
+  <button
+    mat-flat-button
+    color="primary"
+    class="user-action-btn"
+    (click)="openUserModal()"
+  >
+    New User
+  </button>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name.</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef>Company Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.company.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef>City</th>
+      <td mat-cell *matCellDef="let element">{{ element.address.city }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="todosCount">
+      <th mat-header-cell *matHeaderCellDef>Todos Count</th>
+      <td mat-cell *matCellDef="let element">{{ element.todoCount }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+>>>>>>> de4da1b25b07de3c6e8eb2d628ba220b73bb3258

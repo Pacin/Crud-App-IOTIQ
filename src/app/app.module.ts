@@ -9,17 +9,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NavComponent } from './components/nav/nav.component';
 import { UsersComponent } from './pages/users/users.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { TodosComponent } from './pages/todos/todos.component';
-import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { TableComponent } from './components/table/table.component';
 @NgModule({
-  declarations: [AppComponent, NavComponent, UsersComponent, PostsComponent, TodosComponent, TableComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    UsersComponent,
+    PostsComponent,
+    TodosComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,8 +37,6 @@ import { TableComponent } from './components/table/table.component';
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],

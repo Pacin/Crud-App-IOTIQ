@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export class UserModel {
     id: number;
     name: string;
@@ -20,4 +21,17 @@ export class address {
     suite: string;
     city: string;
     zipcode: string;
+=======
+export interface UserModel {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    city: string;
+  };
+  company: {
+    name: string;
+  };
+>>>>>>> de4da1b25b07de3c6e8eb2d628ba220b73bb3258
 }

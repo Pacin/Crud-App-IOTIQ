@@ -1,1 +1,38 @@
-<p>posts works!</p>
+<div class="container">
+  <button
+    class="posts-action-btn"
+    mat-flat-button
+    color="primary"
+    (click)="openPostModal()"
+  >
+    New Post
+  </button>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="body">
+      <th mat-header-cell *matHeaderCellDef>Body</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          class="post-body"
+          mat-icon-button
+          color="accent"
+          (click)="openPostBodyModal()"
+        >
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
