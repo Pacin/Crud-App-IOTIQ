@@ -1,4 +1,12 @@
 <div class="container">
+  <button
+    mat-flat-button
+    color="primary"
+    class="user-action-btn"
+    (click)="openUserModal()"
+  >
+    New User
+  </button>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name.</th>

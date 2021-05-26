@@ -42,4 +42,8 @@ export class TodosComponent implements OnInit {
       this.getTodos();
     });
   }
+
+  openTodoModal() {
+    console.log('Todo Modal Opened.');
+  }
 }

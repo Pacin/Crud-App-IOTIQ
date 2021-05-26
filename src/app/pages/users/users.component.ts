@@ -51,4 +51,8 @@ export class UsersComponent implements OnInit {
       this.getAllUsers();
     });
   }
+
+  openUserModal() {
+    console.log('User Modal Opened.');
+  }
 }

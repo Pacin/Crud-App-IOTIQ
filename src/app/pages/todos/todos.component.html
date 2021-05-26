@@ -1,4 +1,12 @@
 <div class="container">
+  <button
+    class="todos-action-btn"
+    mat-flat-button
+    color="primary"
+    (click)="openTodoModal()"
+  >
+    New Todo
+  </button>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef>Username</th>
@@ -19,7 +27,7 @@
         <button *ngIf="!element.completed" mat-icon-button color="accent">
           <mat-icon>not_interested</mat-icon>
         </button>
-
+        <!-- Displaying completion status with a text instead of buttons. -->
         <!-- {{ element.completed ? "Completed" : "Not Completed" }} -->
       </td>
     </ng-container>

@@ -46,4 +46,8 @@ export class PostsComponent implements OnInit {
   openPostBodyModal() {
     console.log('model opened.');
   }
+
+  openPostModal() {
+    console.log('Post Modal Opened.');
+  }
 }

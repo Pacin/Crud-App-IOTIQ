@@ -1,4 +1,12 @@
 <div class="container">
+  <button
+    class="posts-action-btn"
+    mat-flat-button
+    color="primary"
+    (click)="openPostModal()"
+  >
+    New Post
+  </button>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef>Username</th>
