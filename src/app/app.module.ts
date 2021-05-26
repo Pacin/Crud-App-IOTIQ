@@ -14,8 +14,17 @@ import { NavComponent } from './components/nav/nav.component';
 import { UsersComponent } from './pages/users/users.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { TodosComponent } from './pages/todos/todos.component';
+import { TableComponent } from './components/table/table.component';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
-  declarations: [AppComponent, NavComponent, UsersComponent, PostsComponent, TodosComponent],
+  declarations: [
+    AppComponent,
+    NavComponent,
+    UsersComponent,
+    PostsComponent,
+    TodosComponent,
+    TableComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +35,7 @@ import { TodosComponent } from './pages/todos/todos.component';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
