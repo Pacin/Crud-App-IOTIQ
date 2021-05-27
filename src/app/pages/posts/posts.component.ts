@@ -14,6 +14,10 @@ export class PostsComponent implements OnInit {
   dataSource: any;
   data: PostModel[];
   userList: UserModel[];
+  postList: PostModel[];
+  isPostModalOpen: boolean = false;
+  postId: number;
+  postIds: any[] = [];
 
   constructor(
     private postService: PostService,
@@ -24,7 +28,7 @@ export class PostsComponent implements OnInit {
     this.fetchUserList();
   }
 
-  getTodos() {
+  getPosts() {
     this.postService.fetchPosts().subscribe((data) => {
       for (let i = 0; i < data.length; i++) {
         let userId = data[i].userId;
@@ -33,21 +37,23 @@ export class PostsComponent implements OnInit {
         data[i]['username'] = name;
       }
       this.dataSource = data;
+      this.postList = data;
     });
   }
 
   fetchUserList() {
     this.userService.fetchUser().subscribe((data) => {
       this.userList = data;
-      this.getTodos();
+      this.getPosts();
     });
   }
 
-  openPostBodyModal() {
-    console.log('model opened.');
+  openPostModal(postId) {
+    this.isPostModalOpen = true;
+    this.postId = postId;
+    this.postIds = this.postList.filter((post) => post.id == this.postId);
   }
-
-  openPostModal() {
-    console.log('Post Modal Opened.');
+  togglePostModal() {
+    this.isPostModalOpen = !this.isPostModalOpen;
   }
 }

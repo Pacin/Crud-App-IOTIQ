@@ -14,6 +14,7 @@ export class TodosComponent implements OnInit {
   dataSource: any;
   data: TodoModel[];
   userList: UserModel[];
+  isTodoModalOpen: boolean = false;
 
   constructor(
     private todoService: TodoService,
@@ -43,7 +44,7 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  openTodoModal() {
+  toggleTodoModal() {
     console.log('Todo Modal Opened.');
   }
 }

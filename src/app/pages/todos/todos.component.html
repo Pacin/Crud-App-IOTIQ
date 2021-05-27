@@ -3,7 +3,7 @@
     class="todos-action-btn"
     mat-flat-button
     color="primary"
-    (click)="openTodoModal()"
+    (click)="toggleTodoModal()"
   >
     New Todo
   </button>
@@ -36,3 +36,21 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
+
+<app-modal [isOpen]="isTodoModalOpen">
+  <div class="modal-wrapper">
+    <button
+      mat-icon-button
+      class="modal-close"
+      color="secondary"
+      (click)="toggleTodoModal()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <header class="modal-header">
+      <h3 class="header-title">ADD TODO</h3>
+    </header>
+    <hr class="modal-divider" />
+    <div class="modal-content"></div>
+  </div>
+</app-modal>

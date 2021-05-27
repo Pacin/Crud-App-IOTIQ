@@ -1,12 +1,4 @@
 <div class="container">
-  <button
-    class="posts-action-btn"
-    mat-flat-button
-    color="primary"
-    (click)="openPostModal()"
-  >
-    New Post
-  </button>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef>Username</th>
@@ -25,7 +17,7 @@
           class="post-body"
           mat-icon-button
           color="accent"
-          (click)="openPostBodyModal()"
+          (click)="openPostModal(element.id)"
         >
           <mat-icon>open_in_new</mat-icon>
         </button>
@@ -36,3 +28,23 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </div>
+
+<app-modal [isOpen]="isPostModalOpen">
+  <div class="modal-wrapper">
+    <button
+      mat-icon-button
+      class="modal-close"
+      color="secondary"
+      (click)="togglePostModal()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <header class="modal-header">
+      <h3 class="header-title">POST BODY</h3>
+    </header>
+    <hr class="modal-divider" />
+    <div class="modal-content" *ngFor="let post of postIds">
+      {{ post.body }}
+    </div>
+  </div>
+</app-modal>
