@@ -1,9 +1,10 @@
 <div class="app">
-  <div class="toolbar">
+  <div color="primary" class="toolbar">
     <header class="toolbar-wrapper">
       <button mat-button class="toolbar-logo" (click)="sidenav.toggle()">
         <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
       </button>
+      <a routerLink="/" class="brand">CrudApp</a>
     </header>
   </div>
   <mat-sidenav-container class="sidenav-container">

@@ -20,14 +20,23 @@
 
 .toolbar {
   width: 100%;
-  background-color: $blue;
+  background-color: #3f51b5;
   &-wrapper {
-    display: block;
+    display: inline-flex;
+    align-items: center;
     height: $header;
     width: 100%;
   }
 
   &-logo {
     padding: 10px;
+    color: $white;
   }
+}
+
+.brand {
+  color: $white;
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 10px;
 }

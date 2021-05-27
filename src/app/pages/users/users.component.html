@@ -43,14 +43,86 @@
   </table>
 </div>
 
-<app-modal  [isOpen]="isUserModalOpen">
+<app-modal [isOpen]="isUserModalOpen">
   <div class="modal-wrapper">
-  <header class="modal-header">
-    <button mat-icon-button  class="modal-close" color="secondary" (click)="toggleUserModal()"><mat-icon>close</mat-icon></button>
-     <h3 class="header-title">Create User</h3>
-     <hr>
-  </header> 
-  <div class="modal-content">
+    <button
+      mat-icon-button
+      class="modal-close"
+      color="secondary"
+      (click)="toggleUserModal()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <header class="modal-header">
+      <h3 class="header-title">Create User</h3>
+    </header>
+    <hr class="modal-divider" />
+    <div class="modal-content">
+      <form [formGroup]="newUser" (submit)="addUser()">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Name"
+            formControlName="name"
+          />
+          <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+            Please enter a <strong>valid</strong> name.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="example@example.com"
+            formControlName="email"
+          />
+          <mat-error *ngIf="email.errors?.email && !email.errors?.required">
+            Please enter a <strong>valid</strong> email.
+          </mat-error>
+          <mat-error *ngIf="email.errors?.required">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Phone</mat-label>
+          <input
+            type="tel"
+            matInput
+            placeholder="5432157890"
+            formControlName="phone"
+          />
+          <mat-error *ngIf="phone.errors?.pattern && email.errors?.required">
+            Please enter a <strong>valid</strong> phone number.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="City"
+            formControlName="city"
+          />
+          <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
+            Please enter a <strong>valid</strong> city.
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!newUser.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   </div>
-</div>
 </app-modal>

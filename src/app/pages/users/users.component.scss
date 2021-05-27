@@ -1,4 +1,4 @@
-@import '../../../assets/styles/theme';
+@import "../../../assets/styles/theme";
 
 .container {
   display: flex;
@@ -25,14 +25,45 @@ table {
   margin-bottom: 15px;
 }
 
-
-
 .modal {
-&-wrapper {
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  &-wrapper {
+    color: $line;
+    background-color: darken($white, 5%);
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &-header {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-close {
+    position: absolute;
+    right: 0;
+  }
+  &-divider {
+    color: $white;
+  }
+
+  &-content {
+    margin-top: 30px;
+    padding: 25px;
+
+    & form {
+      display: flex;
+      flex-direction: column;
+    }
+    & mat-form-field {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+  }
 }
 
+.header-title {
+  font-size: 21px;
 }

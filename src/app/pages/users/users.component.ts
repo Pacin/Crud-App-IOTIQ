@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { TodoModel } from 'src/app/models/todo.model';
 import { UserModel } from 'src/app/models/user.model';
 import { TodoService } from 'src/app/services/todo.service';
@@ -18,12 +24,45 @@ export class UsersComponent implements OnInit {
     'city',
     'todosCount',
   ];
-  newUser = {
-    name: '',
-    email:'',
-    phone:'',
-    city: '',
+
+  nameValidation = "^[a-zA-ZçÇğĞıİöÖşŞüÜ -']+";
+  phoneValidation = '^[0-9]*$';
+
+  newUser: FormGroup = this.formBuilder.group({
+    name: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.pattern(this.nameValidation),
+      ],
+    }),
+    email: new FormControl('', {
+      validators: [Validators.required, Validators.email],
+    }),
+    phone: new FormControl('', {
+      validators: [
+        Validators.required,
+        Validators.pattern(this.phoneValidation),
+      ],
+    }),
+    city: new FormControl('', {
+      validators: [Validators.required],
+      updateOn: 'change',
+    }),
+  });
+
+  get name() {
+    return this.newUser.get('name');
   }
+  get email() {
+    return this.newUser.get('email');
+  }
+  get phone() {
+    return this.newUser.get('phone');
+  }
+  get city() {
+    return this.newUser.get('city');
+  }
+
   dataSource: any;
   data: UserModel[];
   todoList: TodoModel[];
@@ -31,7 +70,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -59,10 +99,12 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  
-
   toggleUserModal() {
     this.isUserModalOpen = !this.isUserModalOpen;
+    this.newUser.reset();
   }
 
+  addUser() {
+    alert('Successfully added.');
+  }
 }
