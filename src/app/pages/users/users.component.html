@@ -96,7 +96,7 @@
             placeholder="5432157890"
             formControlName="phone"
           />
-          <mat-error *ngIf="phone.errors?.pattern && email.errors?.required">
+          <mat-error *ngIf="phone.errors?.pattern || email.errors?.required">
             Please enter a <strong>valid</strong> phone number.
           </mat-error>
         </mat-form-field>
