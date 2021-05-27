@@ -9,6 +9,8 @@ import { TodoModel } from 'src/app/models/todo.model';
 import { UserModel } from 'src/app/models/user.model';
 import { TodoService } from 'src/app/services/todo.service';
 import { UserService } from 'src/app/services/user.service';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -16,6 +18,13 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
+  userList: UserModel[] = [];
+  dataSource: any;
+  data: UserModel[];
+  todoList: TodoModel[];
+  isUserModalOpen: boolean = false;
+  // zipcodeOfCities = {};
+  filteredCities: Observable<UserModel[]>;
   displayedColumns: string[] = [
     'name',
     'username',
@@ -48,6 +57,10 @@ export class UsersComponent implements OnInit {
       validators: [Validators.required],
       updateOn: 'change',
     }),
+    zipcode: new FormControl('', {
+      validators: [Validators.required],
+      updateOn: 'change',
+    }),
   });
 
   get name() {
@@ -63,10 +76,9 @@ export class UsersComponent implements OnInit {
     return this.newUser.get('city');
   }
 
-  dataSource: any;
-  data: UserModel[];
-  todoList: TodoModel[];
-  isUserModalOpen: boolean = false;
+  get zipcode() {
+    return this.newUser.get('zipcode');
+  }
 
   constructor(
     private userService: UserService,
@@ -76,6 +88,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTodos();
+    this.citySelect;
   }
 
   getAllUsers() {
@@ -87,6 +100,7 @@ export class UsersComponent implements OnInit {
         data[i]['todoCount'] = todosCount;
       }
       this.data = data;
+      this.userList = data;
       this.dataSource = this.data;
     });
   }
@@ -96,6 +110,7 @@ export class UsersComponent implements OnInit {
       this.todoList = data;
 
       this.getAllUsers();
+      // this.citySelect;
     });
   }
 
@@ -107,4 +122,9 @@ export class UsersComponent implements OnInit {
   addUser() {
     alert('Successfully added.');
   }
+
+  citySelect = (val) => {
+    let selectedCity = val;
+    console.log(selectedCity);
+  };
 }

@@ -108,10 +108,33 @@
             type="text"
             placeholder="City"
             formControlName="city"
+            [matAutocomplete]="auto"
+            (change)="citySelect($event)"
           />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let user of userList"
+              [value]="user.address.city"
+            >
+              {{ user.address.city }}
+            </mat-option>
+          </mat-autocomplete>
           <mat-error *ngIf="city.invalid && (city.dirty || city.touched)">
             Please enter a <strong>valid</strong> city.
           </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Zipcode</mat-label>
+          <mat-select formControlName="zipcode" name="zipcode">
+            <mat-option>None</mat-option>
+            <mat-option
+              *ngFor="let user of userList"
+              [value]="user.address.zipcode"
+            >
+              {{ user.address.zipcode }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <button

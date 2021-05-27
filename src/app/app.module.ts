@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { NavComponent } from './components/nav/nav.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -55,6 +56,7 @@ import { LandingComponent } from './pages/landing/landing.component';
     MatNativeDateModule,
     MatDatepickerModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
