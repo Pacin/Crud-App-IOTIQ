@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { TodoModel } from 'src/app/models/todo.model';
 import { UserModel } from 'src/app/models/user.model';
 import { TodoService } from 'src/app/services/todo.service';
@@ -16,9 +22,27 @@ export class TodosComponent implements OnInit {
   userList: UserModel[];
   isTodoModalOpen: boolean = false;
 
+  newTodo: FormGroup = this.formBuilder.group({
+    username: new FormControl('', {
+      validators: Validators.required,
+    }),
+    title: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(20)],
+    }),
+  });
+
+  get title() {
+    return this.newTodo.get('title');
+  }
+
+  get username() {
+    return this.newTodo.get('username');
+  }
+
   constructor(
     private todoService: TodoService,
-    private userService: UserService
+    private userService: UserService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +69,10 @@ export class TodosComponent implements OnInit {
   }
 
   toggleTodoModal() {
-    console.log('Todo Modal Opened.');
+    this.isTodoModalOpen = !this.isTodoModalOpen;
+  }
+  addTodo() {
+    alert('Todo has added.');
+    this.isTodoModalOpen = false;
   }
 }
