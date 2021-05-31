@@ -10,7 +10,7 @@ import { UserModel } from 'src/app/models/user.model';
 import { TodoService } from 'src/app/services/todo.service';
 import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-users',
@@ -88,7 +88,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTodos();
-    this.citySelect;
+    this.setZipcode();
   }
 
   getAllUsers() {
@@ -123,8 +123,12 @@ export class UsersComponent implements OnInit {
     alert('Successfully added.');
   }
 
-  citySelect = (val) => {
-    let selectedCity = val;
-    console.log(selectedCity);
+  setZipcode() {
+    this.newUser.get('city').valueChanges.subscribe(val => {
+      const selectedUser = this.userList.find(user => user.address.city == val);
+      if(selectedUser && selectedUser.address) {
+        this.newUser.get('zipcode').setValue(selectedUser.address.zipcode);
+      }
+    })
   };
 }

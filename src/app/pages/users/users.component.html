@@ -109,7 +109,6 @@
             placeholder="City"
             formControlName="city"
             [matAutocomplete]="auto"
-            (change)="citySelect($event.option.value)"
           />
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option
